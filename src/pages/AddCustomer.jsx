@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./AddCustomer.css";
 import { addCustomer } from "../features/CustomerSlice";
 import { useDispatch, useSelector } from "react-redux";
-import toast from "react-hot-toast"; 
+import toast from "react-hot-toast";
 import { useState } from "react";
 
 export default function AddCustomer() {
@@ -17,6 +17,7 @@ export default function AddCustomer() {
     folderName: "",
     status: "Pending", // 👈 Lowercase s
     customerType: "VIP",
+    PhotoType:"FullBody",
     amountPaid: 0,
     remainingAmount: 0,
     numberOfPhotos: 0,
@@ -24,7 +25,7 @@ export default function AddCustomer() {
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
-    
+
     SetFromData({
       ...FromData,
       // 🌟 HADDII INPUT-KU YAHAY NUMBER, TOOS U BEDDEL NUMBER DHAB AH
@@ -37,11 +38,13 @@ export default function AddCustomer() {
     try {
       await dispatch(addCustomer(FromData)).unwrap();
       toast.success("Customer si guul leh ba lo diwan galeyey! ➕");
-      
+
       // 🚀 Marka uu guuleysto toos ugu celi Dashboard-ka si uu u arko shaxda
-      navigate("/Dashboard"); 
+      navigate("/Dashboard");
     } catch (err) {
-      toast.error(err || "Cillad ayaa dhacday inta lagu guda jiray diiwaangelinta.");
+      toast.error(
+        err || "Cillad ayaa dhacday inta lagu guda jiray diiwaangelinta.",
+      );
     }
   };
 
@@ -148,6 +151,23 @@ export default function AddCustomer() {
             >
               <option value="VIP">VIP</option>
               <option value="NORMAL">NORMAL</option>
+            </select>
+          </div>
+
+          <div className="input-group" style={{ marginTop: "20px" }}>
+            <label>Photo Type</label>
+            <select
+              className="form-select"
+              name="PhotoType"
+              value={FromData.PhotoType}
+              onChange={handleChange}
+            >
+              <option value="FullBody">FullBody</option>
+              <option value="ID_Card">ID_Card</option>
+              <option value="Headshot">Headshot</option>
+              <option value="Portrait">Portrait</option>
+              <option value="Certificate">Certificate</option>
+              <option value="Wedding ">Wedding</option>
             </select>
           </div>
 

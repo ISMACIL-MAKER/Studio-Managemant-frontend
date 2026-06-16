@@ -5,7 +5,7 @@ import { getCustomer } from "../features/CustomerSlice";
 import { useEffect } from "react";
 import { useState } from "react";
 import { deleteCustomer, archiveCustomer } from "../features/CustomerSlice";
-import EditCustomer from "./EditCustomer";
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -25,7 +25,8 @@ export default function Dashboard() {
         (customer.Phone && customer.Phone.toLowerCase().includes(term)) ||
         customer.folderName.toLowerCase().includes(term) ||
         customer.status.toLowerCase().includes(term) ||
-        customer.customerType.toLowerCase().includes(term)
+        customer.customerType.toLowerCase().includes(term) ||
+        customer.PhotoType.toLowerCase().includes(term)
       );
     }) || [];
 
@@ -48,6 +49,28 @@ export default function Dashboard() {
     if (customerType === "NORMAL")
       return { backgroundColor: "#e8f0fe", color: "#1a73e8" };
     return { backgroundColor: "#fef7e0", color: "#b06000" };
+  };
+
+  const getPhotoTypeStyle = (PhotoType) => {
+    if (PhotoType === "FullBody")
+      return { backgroundColor: "#e6f4ea", color: "#137333" };
+
+    if (PhotoType === "ID_Card")
+      return { backgroundColor: "#e8f0fe", color: "#1a73e8" };
+
+    if (PhotoType === "Headshot")
+      return { backgroundColor: "#f3e8ff", color: "#7e22ce" };
+
+    if (PhotoType === "Portrait")
+      return { backgroundColor: "#fef3c7", color: "#b45309" };
+
+    if (PhotoType === "Certificate")
+      return { backgroundColor: "#fee2e2", color: "#dc2626" };
+
+    if (photoType === "Wedding")
+      return { backgroundColor: "#fce7f3", color: "#db2777" };
+
+    return { backgroundColor: "#f1f5f9", color: "#475569" };
   };
 
   return (
@@ -97,11 +120,13 @@ export default function Dashboard() {
                 <th>Full Name</th>
                 <th>Phone Number</th>
                 <th>Folder Name</th>
+                <th>Time</th>
                 <th>Photos</th>
                 <th>Amount Paid</th>
                 <th>Remaining</th>
                 <th>Status</th>
                 <th>customerType</th>
+                <th>PhotoType</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -118,6 +143,7 @@ export default function Dashboard() {
                         {customer.folderName}
                       </code>
                     </td>
+                    <td>{new Date(customer.createdAt).toLocaleDateString()}</td>
                     <td>{customer.numberOfPhotos}</td>
                     <td className="td-paid">${customer.amountPaid}</td>
                     <td
@@ -146,6 +172,16 @@ export default function Dashboard() {
                         {customer.customerType}
                       </span>
                     </td>
+
+                    <td>
+                      <span
+                        className="status-pill"
+                        style={getPhotoTypeStyle(customer.PhotoType)}
+                      >
+                        {customer.PhotoType}
+                      </span>
+                    </td>
+
                     <td>
                       <button
                         className="btn-delete-customer"
@@ -207,7 +243,7 @@ export default function Dashboard() {
               ) : (
                 <tr>
                   <td
-                    colSpan="10"
+                    colSpan="12"
                     style={{ textAlign: "center", padding: "20px" }}
                   >
                     Wax macaamiil ah lama helin.

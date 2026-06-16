@@ -88,6 +88,7 @@ export default function Archive() {
                 <th>Full Name</th>
                 <th>Phone Number</th>
                 <th>Folder Name</th>
+                <th>Time</th>
                 <th>Photos</th>
                 <th>Amount Paid</th>
                 <th>Remaining</th>
@@ -106,6 +107,8 @@ export default function Archive() {
                     <td>
                       <code className="folder-badge">{customer.folderName}</code>
                     </td>
+                    <td>{new Date(customer.createdAt).toLocaleDateString()}</td>
+
                     <td>{customer.numberOfPhotos}</td>
                     <td className="td-paid">${customer.amountPaid}</td>
                     <td

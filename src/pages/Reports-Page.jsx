@@ -52,7 +52,7 @@ export default function Reports() {
           <div className="card-icon">💰</div>
           <div className="card-info">
             <span className="card-label">Total Income</span>
-            <h2 className="card-value">${totalIncome}</h2>
+            <h2 className="card-value">SLSH {totalIncome}</h2>
           </div>
         </div>
 
@@ -60,7 +60,7 @@ export default function Reports() {
           <div className="card-icon">💸</div>
           <div className="card-info">
             <span className="card-label">Total Debt (Deynta)</span>
-            <h2 className="card-value">${totalDebt}</h2>
+            <h2 className="card-value">SLSH {totalDebt}</h2>
           </div>
         </div>
 
