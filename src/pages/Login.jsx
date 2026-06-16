@@ -1,0 +1,89 @@
+import { useState, useEffect } from "react";
+import "./Login.css";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { LoginUser } from "../features/authSlice";
+import { useNavigate } from "react-router-dom";
+
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { token, loading, error } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (token) {
+      navigate("/Dashboard");
+    }
+  }, [token, navigate]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(LoginUser({ email, password }));
+  };
+
+  return (
+    <div className="Container">
+      <div className="Content-login">
+        <div className="content-Right">
+          <div className="right-conten">
+            <h2 className="Title-Right">
+              <span>📸</span>LensSuite Admin
+            </h2>
+            <h1 className="subTitile">Elevate your creative workflow.</h1>
+
+            <p className="subContent">
+              Manage sessions, clients, and finances in one unified
+              precision-built workspace. Joined by 500+ studio owners
+            </p>
+          </div>
+        </div>
+
+        <div className="content-Left">
+          <div className="Form-login">
+            <div className="Header-top">
+              <h1 className="title-left"> Welcome Back 👋</h1>
+              <p className="left-content">
+                Please enter your details to access your studio.
+              </p>
+            </div>
+            <div className="From-container">
+              <form className="from-item" onSubmit={handleSubmit}>
+                <input
+                  className="input"
+                  type="email"
+                  placeholder="example@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+
+                <input
+                  className="input"
+                  type="password"
+                  placeholder="password......"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+
+                {error && <p className="error-text">{error}</p>}
+                <button className="from-button" disabled={loading}>
+                  {loading ? "Loading....." : "sign in to studio"}
+                </button>
+              </form>
+              <p className="register-text">
+                Account ma lihid?{" "}
+                <Link to="/Register" className="register-link">
+                  Register
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

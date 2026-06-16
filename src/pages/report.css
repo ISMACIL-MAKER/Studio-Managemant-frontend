@@ -1,0 +1,93 @@
+/* Reports Main Layout */
+.reports-container {
+  padding: 20px;
+}
+
+/* Grid-ka Kaararka */
+.reports-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Qaabka guud ee Kaarka (Report Card) */
+.report-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon-ka dhex fadhiya kaarka */
+.card-icon {
+  font-size: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Midabaynta gaarka ah ee kaararka maaliyadda */
+.report-card.income .card-icon {
+  background-color: #e6f4ea;
+}
+.report-card.debt .card-icon {
+  background-color: #fce8e6;
+}
+.report-card.users .card-icon {
+  background-color: #e8f0fe;
+}
+.report-card.gallery .card-icon {
+  background-color: #fef7e0;
+}
+
+/* Macluumaadka Qoraalka ee Kaarka */
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 4px 0 0 0;
+}
+
+/* Segment Row Layout */
+.segment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.segment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+}

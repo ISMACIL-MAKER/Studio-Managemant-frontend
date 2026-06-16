@@ -1,0 +1,257 @@
+/* ==========================================
+   📦 LENSSUITE GLOBAL LAYOUT (SHAASHADAHA WAAWEYN)
+   ========================================== */
+.lenssuite-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8fafc;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* 📌 SIDEBAR-KA: WALIGII WUU TAAGNAANAYAA, MA SCROLL-GARAOOMAYO */
+.lenssuite-sidebar {
+  width: 260px;
+  height: 100vh; /* Dhererka buuxa ee shaashadda */
+  position: sticky; /* Wuxuu ku dhegganaanayaa meesha ugu sarreysa */
+  top: 0;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  flex-shrink: 0; /* 🔥 SAXID: Ka hortag inuu isku ururo shaashadaha waaweyn */
+  box-sizing: border-box;
+}
+
+/* 🖥️ MIDIGTA (CONTENT-KA): ISAGA AYAA SCROLL SAMAYNAYA HADDII MACAAMIISHU BADATO */
+.lenssuite-main {
+  flex-grow: 1;
+  padding: 30px 40px; /* Wax yar baa laga yareeyey padding-ka dhinacyada si boos loo helo */
+
+  width: 100%;
+  max-width: 100%; /* 🔥 SAXID: Ka saar 1400px ama 900px, ka dhig 100% si uu monitor-ka u buuxiyo */
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   Navigation & Components Styling
+   ========================================== */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.brand-icon {
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.sidebar-brand h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+.sidebar-brand p {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1; /* Wuxuu hoos u riixayaa footer-ka guud */
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #64748b;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.table-container .menu-item span {
+  font-size: 18px;
+}
+
+.menu-item:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* 🔥 KAN WUXUU SI TOOS AH U SHIDAYAA LINK-KA UU USER-KU GUUD QAADANAYO */
+.menu-item.active {
+  background-color: #4f46e5;
+  color: #ffffff;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Dashboard Row Elements */
+.dashboard-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.btn-add-customer {
+  background-color: #4f46e5;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn-add-customer:hover {
+  background-color: #3730a3;
+}
+
+/* 📊 TABLE DESIGN: WUXUU SHUQLO BIYO-COOD AH KU LEEYAHAY SHAAHSADDA WEYN */
+.table-container {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  width: 100%; /* Wuxuu si buuxda u raacayaa ballaca main-ka */
+  overflow-x: auto;
+}
+
+.lenssuite-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  table-layout: auto;
+}
+
+.lenssuite-table th {
+  background-color: #f8fafc;
+  padding: 16px;
+  color: #475569;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.lenssuite-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.td-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.folder-badge {
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.td-paid {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.td-remaining {
+  font-weight: 600;
+}
+
+/* Search Wrapper Styles */
+.search-wrapper {
+  position: relative;
+  flex-grow: 1;
+  max-width: 450px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #334155;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: #4f46e5;
+}
+
+/* Foomamka Add Customer Profiles */
+.form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.form-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group input,
+.form-select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+}

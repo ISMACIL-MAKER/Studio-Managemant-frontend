@@ -1,0 +1,93 @@
+import { useSelector } from "react-redux";
+import { Route, Routes, Navigate } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/register";
+import Dashboard from "./pages/Dashboard";
+import AddCustomer from "./pages/AddCustomer";
+import Layout from "./pages/Layout";
+import EditCustomer from "./pages/EditCustomer";
+import Reports from "./pages/Reports-Page";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminLayout from "./pages/Admin/AdminLayout";
+import ManageStudios from "./pages/Admin/ManageStudios";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Toaster } from "react-hot-toast";
+import Archive from "./pages/Archive";
+
+
+export default function App() {
+  // Waxaan halkan ka soo dhex bixinnay loading haddii uu jiro nidaamkaaga auth
+  const { token, userCustomer, loading } = useSelector((state) => state.auth);
+  const role = userCustomer?.role;
+
+  // Haddii ay xogta user-ka wali soo dhex kaceyso, sug si uusan loop u dhalan
+  if (loading) {
+    return (
+      <div style={{ textDisplay: "center", padding: "50px" }}>
+        LensSuite la soo kicinayaa...
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Routes>
+        {/* 🔐 BOGGA HORE (Login & Register Redirects) */}
+        <Route
+          path="/"
+          element={
+            token && userCustomer ? (
+              role === "superadmin" ? (
+                <Navigate to="/Admin/AdminDashboard" replace />
+              ) : (
+                <Navigate to="/Dashboard" replace />
+              )
+            ) : (
+              <Login />
+            )
+          }
+        />
+
+        <Route
+          path="/Register"
+          element={
+            token && userCustomer ? (
+              role === "superadmin" ? (
+                <Navigate to="/Admin/AdminDashboard" replace />
+              ) : (
+                <Navigate to="/Dashboard" replace />
+              )
+            ) : (
+              <Register />
+            )
+          }
+        />
+
+        {/* 📸 1. STUDIO ADMIN ROUTES */}
+        <Route element={<ProtectedRoute allowedRoles={["studio_admin"]} />}>
+          <Route element={<Layout />}>
+            <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/AddCustomer" element={<AddCustomer />} />
+            <Route path="/EditCustomer/:id" element={<EditCustomer />} />
+            <Route path="/Reports-Page" element={<Reports />} />
+            
+            <Route path="/Archive" element={<Archive/>} />
+          </Route>
+        </Route>
+
+        {/* 👑 2. SUPERADMIN ROUTES */}
+        <Route element={<ProtectedRoute allowedRoles={["superadmin"]} />}>
+          <Route element={<AdminLayout />}>
+            <Route path="/Admin/AdminDashboard" element={<AdminDashboard />} />
+            <Route path="/Admin/ManageStudios" element={<ManageStudios />} />
+          </Route>
+        </Route>
+
+        {/* Af-duubka URL-ada khaldan */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
+  );
+}
