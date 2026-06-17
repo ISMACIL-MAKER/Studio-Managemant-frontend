@@ -180,7 +180,7 @@ export default function Dashboard() {
                         style={getPhotoTypeStyle(customer.PhotoType)}
                       >
                         {customer.PhotoType}
-                           {console.log(customer.PhotoType)}
+                          
                       </span>
                     </td>
 
