@@ -94,6 +94,7 @@ export default function Archive() {
                 <th>Remaining</th>
                 <th>Status</th>
                 <th>customerType</th>
+                <th>PhotoType</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -130,6 +131,11 @@ export default function Archive() {
                     <td>
                       <span className="status-pill" style={{ backgroundColor: "#e8f0fe", color: "#1a73e8" }}>
                         {customer.customerType}
+                      </span>
+                    </td>
+                    <td>
+                      <span className="status-pill" style={{ backgroundColor: "#e8f0fe", color: "#1a73e8" }}>
+                        {customer.PhotoType}
                       </span>
                     </td>
                     <td>

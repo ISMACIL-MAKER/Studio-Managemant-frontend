@@ -1,4 +1,7 @@
-.lenssuite-layout {
+/* ==========================================================================
+   📦 LENSSUITE ADD CUSTOMER LAYOUT (SHAASHADAHA WAAWEYN)
+   ========================================================================== */
+.addCustomer .lenssuite-layout {
   display: flex;
   min-height: 100vh;
   background-color: #f8fafc;
@@ -87,7 +90,9 @@
 .lenssuite-main {
   flex-grow: 1;
   padding: 40px 60px;
+  width: 100%;
   max-width: 900px;
+  box-sizing: border-box;
 }
 
 .breadcrumb {
@@ -207,4 +212,50 @@
   color: #ef4444;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* ==========================================================================
+   📱 ADD CUSTOMER RESPONSIVE STYLES (LAPTOPS & TABLETS)
+   ========================================================================== */
+
+/* Marka shaashadu ka yar tahay 1024px (Laptops-ka yaryar) */
+@media screen and (max-width: 1024px) {
+  .lenssuite-main {
+    padding: 30px 40px; /* Padding-ka waa la yareeyey si foomku u neefsado */
+    max-width: 100%;
+  }
+}
+
+/* Marka shaashadu ka yar tahay 768px (Tablets iyo Screens-ka dhexe) */
+@media screen and (max-width: 768px) {
+  .form-grid {
+    flex-direction: column; /* Inputs-ka dhinac-dhinaca ahaa waxay isu beddelayaan kor iyo hoos */
+    gap: 16px;
+  }
+
+  .form-card {
+    padding: 20px; /* Cidhiidhiga waa laga saaray card-ka gudihiisa */
+  }
+
+  /* Badhamada Save iyo Cancel oo dhinac isku baddalaya halkii ay kor iyo hoos ka ahaan lahaayeen */
+  .form-actions {
+    flex-direction: row; 
+    gap: 16px;
+  }
+
+  .btn-submit, .btn-cancel {
+    flex: 1; /* Labada badhan booska si siman ayay u qaybsanayaan dhinacyada */
+    padding: 12px;
+  }
+}
+
+/* Marka shaashadu aad u yarato (Mobile-ada caadiga ah) */
+@media screen and (max-width: 480px) {
+  .form-actions {
+    flex-direction: column; /* Badhamada dib ayay hoos iyo kor ugu noqonayaan mobile-ka yar dhexdiis */
+  }
+  
+  .form-title {
+    font-size: 24px;
+  }
 }

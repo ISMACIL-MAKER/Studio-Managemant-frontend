@@ -15,9 +15,9 @@ export default function AddCustomer() {
     fullName: "",
     Phone: "",
     folderName: "",
-    status: "Pending", // 👈 Lowercase s
+    status: "Pending", 
     customerType: "VIP",
-    PhotoType:"FullBody",
+    PhotoType: "FullBody",
     amountPaid: 0,
     remainingAmount: 0,
     numberOfPhotos: 0,
@@ -167,7 +167,7 @@ export default function AddCustomer() {
               <option value="Headshot">Headshot</option>
               <option value="Portrait">Portrait</option>
               <option value="Certificate">Certificate</option>
-              <option value="Wedding ">Wedding</option>
+              <option value="Wedding">Wedding</option>
             </select>
           </div>
 

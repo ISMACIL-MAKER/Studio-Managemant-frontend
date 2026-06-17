@@ -1,8 +1,13 @@
+/* ==========================================================================
+   📦 LENSSUITE EDIT CUSTOMER LAYOUT (SHAASHADAHA WAAWEYN)
+   ========================================================================== */
+
 /* Container-ka guud ee Edit Customer */
 .edit-customer-container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Title-ka foomka */
@@ -23,6 +28,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 /* Kooxaha foomka (Label + Input) */
@@ -42,7 +48,7 @@
 /* Naqshadda Inputs-ka gaarka ah */
 .form-input, .form-select {
   width: 100%;
-  padding: 12px 6px;
+  padding: 12px; /* Waxaa laga dhigay 12px siman si qoraalka guduhu u neefsado */
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   font-size: 14px;
@@ -50,6 +56,7 @@
   background-color: #ffffff;
   outline: none;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 /* Marka la gujiyo input-ka (Focus) */
@@ -65,13 +72,6 @@
   gap: 16px;
 }
 
-/* Marka shaashadu yarato (Mobile) grid-ka ka dhig 1 column */
-@media (max-width: 600px) {
-  .form-group-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* Badanka weyn ee Update Customer */
 .btn-submit-customer {
   background-color: #4f46e5;
@@ -84,8 +84,53 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   margin-top: 10px;
+  width: 100%; /* Wuxuu buuxinayaa ballaca card-ka si ay u fududaato gujintu */
 }
 
 .btn-submit-customer:hover {
   background-color: #4338ca;
+}
+
+/* ==========================================================================
+   📱 EDIT CUSTOMER RESPONSIVE STYLES (LAPTOPS, TABLETS & MOBILES)
+   ========================================================================== */
+
+/* Marka shaashadu tahay Laptops-ka yaryar iyo Tablets-ka (Under 900px) */
+@media screen and (max-width: 900px) {
+  .edit-customer-container {
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  .edit-form-card {
+    padding: 24px; /* Padding-ka dhexda ah ayaa yar la dhimes si uu boos u helo */
+  }
+
+  /* Grid-ka 3-da ahaa wuxuu isu beddelayaa 2 tiir si aysan inputs-ku ugu ururin */
+  .form-group-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Marka shaashadu yarato oo ay ka hoos marto 600px (Mobile Screens) */
+@media screen and (max-width: 600px) {
+  .form-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .edit-form-card {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  /* Qaybta Photos, Paid iyo Remaining halkaan waxay wada noqonayaan 1 tiir oo kaliya */
+  .form-group-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn-submit-customer {
+    padding: 12px;
+    font-size: 15px;
+  }
 }

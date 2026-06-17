@@ -26,7 +26,7 @@ export default function Dashboard() {
         customer.folderName.toLowerCase().includes(term) ||
         customer.status.toLowerCase().includes(term) ||
         customer.customerType.toLowerCase().includes(term) ||
-        customer.PhotoType.toLowerCase().includes(term)
+       (customer.PhotoType && customer.PhotoType.toLowerCase().includes(term))
       );
     }) || [];
 
@@ -55,10 +55,10 @@ export default function Dashboard() {
     if (PhotoType === "FullBody")
       return { backgroundColor: "#e6f4ea", color: "#137333" };
 
-    if (PhotoType === "ID_Card")
+    if (PhotoType  === "ID_Card")
       return { backgroundColor: "#e8f0fe", color: "#1a73e8" };
 
-    if (PhotoType === "Headshot")
+    if (PhotoType  === "Headshot")
       return { backgroundColor: "#f3e8ff", color: "#7e22ce" };
 
     if (PhotoType === "Portrait")
@@ -67,7 +67,7 @@ export default function Dashboard() {
     if (PhotoType === "Certificate")
       return { backgroundColor: "#fee2e2", color: "#dc2626" };
 
-    if (photoType === "Wedding")
+    if (PhotoType === "Wedding")
       return { backgroundColor: "#fce7f3", color: "#db2777" };
 
     return { backgroundColor: "#f1f5f9", color: "#475569" };
@@ -170,6 +170,7 @@ export default function Dashboard() {
                         style={getcustomerType(customer.customerType)}
                       >
                         {customer.customerType}
+                     
                       </span>
                     </td>
 
@@ -179,6 +180,7 @@ export default function Dashboard() {
                         style={getPhotoTypeStyle(customer.PhotoType)}
                       >
                         {customer.PhotoType}
+                           {console.log(customer.PhotoType)}
                       </span>
                     </td>
 

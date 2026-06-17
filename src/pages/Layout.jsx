@@ -67,7 +67,7 @@ export default function Layout() {
 
         {/* FOOTER-KA SIDEBAR-KA: MAR KASTA HOOS AYUU KU DHAMANAYAA */}
         <div className="sidebar-footer">
-          <div className="menu-item">
+          <div className="menu-item" onClick={()=> navigate("/Support")}>
             <span>
               <FaLifeRing />
             </span>{" "}

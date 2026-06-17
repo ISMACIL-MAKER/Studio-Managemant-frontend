@@ -259,3 +259,148 @@
 }
 
 
+/* 🛠️ SUPPORT & HELP DROPDOWN STYLES */
+.support-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.support-dropdown {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.5;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.support-dropdown p {
+  margin: 0 0 10px 0;
+}
+
+/* Badhanka WhatsApp-ka */
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #25d366; /* Midabka rasmiga ah ee WhatsApp */
+  color: white !important;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebd58;
+  transform: translateY(-1px);
+}
+
+/* Logout styling si uu u yara fogaado */
+.logout-item {
+  color: #ef4444 !important; /* Midab gaduud ah si uu uga gartid waxyaabaha kale */
+}
+.logout-item:hover {
+  background-color: #fef2f2 !important;
+}
+
+
+
+
+/* ==========================================================================
+   📱 RESPONSIVE DESIGN FOR LAPTOPS & SMALLER SCREENS (QAYBTA 1AAD)
+   ========================================================================== */
+
+/* Marka shaashadu ka yar tahay 1200px (Sida Laptop-yada caadiga ah) */
+@media screen and (max-width: 1200px) {
+  
+  /* 🖥️ La qabsiga Content-ka midig */
+  .lenssuite-main {
+    padding: 20px; /* Wax yar baa laga yareeyey padding-ka si boos loo helo */
+  }
+
+  /* 📊 Madaxa Dashboard-ka oo isku dhex dhalanaya haddii boosku yaraado */
+  .dashboard-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  /* Search-ga iyo badhanka oo boos buuxa qaadanaya marka la isku soo dhaco */
+  .search-wrapper {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-add-customer {
+    width: 100%; /* Badhanka wuxuu noqonayaa mid ballaran si uu u fududaado gujintu */
+    text-align: center;
+  }
+
+  /* 🔍 SAXIDDA MIISKA: Kani waa sirta xal u ah Screenshot 2026-06-16 122346_2.png */
+  .table-container {
+    width: 100%;
+    overflow-x: auto; /* Wuxuu keenayaa scroll hoose oo miiska gudihiisa ah halkii uu shaashada dhiqi lahaa */
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  .lenssuite-table {
+    table-layout: auto; /* Wuxuu u oggolaanayaa tiirarku inay u fidaan dhererkooda saxda ah */
+    min-width: 950px;   /* Wuxuu qasbayaa in miisku uusan ka yaraan 950px si xogtu u neefsato */
+  }
+
+  .lenssuite-table th, 
+  .lenssuite-table td {
+    padding: 12px 8px; /* Wax yar baa padding-ka laga yareeyey */
+    white-space: nowrap; /* Wuxuu ka hortagayaa in qoraaladu isku dhex murgancan */
+  }
+}
+
+/* Marka shaashadu aad u yarato (Tablets iyo Screens-ka ka yar 768px) */
+@media screen and (max-width: 768px) {
+  .lenssuite-layout {
+    flex-direction: column; /* Sidebar-ka iyo Content-ka isku dhex dhacaya hoos iyo kor */
+  }
+
+  .lenssuite-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .sidebar-brand {
+    margin-bottom: 20px;
+  }
+
+  .sidebar-menu {
+    flex-direction: row; /* Menu-ha sidebar-ka wuxuu isu beddelayaa dhinac-dhinac (Row) */
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .menu-item {
+    padding: 8px 12px;
+    white-space: nowrap;
+  }
+
+  .sidebar-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+

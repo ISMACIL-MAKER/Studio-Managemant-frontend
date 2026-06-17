@@ -14,6 +14,7 @@ import ManageStudios from "./pages/Admin/ManageStudios";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { Toaster } from "react-hot-toast";
 import Archive from "./pages/Archive";
+import Support from "./pages/Support";
 
 
 export default function App() {
@@ -72,6 +73,7 @@ export default function App() {
             <Route path="/AddCustomer" element={<AddCustomer />} />
             <Route path="/EditCustomer/:id" element={<EditCustomer />} />
             <Route path="/Reports-Page" element={<Reports />} />
+            <Route path="/Support" element={<Support/>}/>
             
             <Route path="/Archive" element={<Archive/>} />
           </Route>

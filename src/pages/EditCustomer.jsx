@@ -17,6 +17,7 @@ export default function EditCustomer() {
     folderName: "",
     customerType: "VIP",
     status: "Pending",
+    PhotoType: "FullBody", // 🌟 KU DARID: State-ka bilowga ah waxaa lagu daray PhotoType
     amountPaid: 0,
     remainingAmount: 0,
     numberOfPhotos: 0,
@@ -46,20 +47,22 @@ export default function EditCustomer() {
 
   // input change
   const handleChange = (e) => {
+    const { name, value, type } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      // 🌟 SAXID: Haddii uu yahay input number ah, u beddel lambar dhab ah si uusan backend-ku u diidin
+      [name]: type === "number" ? Number(value) : value,
     });
   };
 
   // submit update
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     await dispatch(updateCustomer({ id, customerData: formData })).unwrap();
 
     alert("Customer updated successfully ✅");
-    toast.success("Customer si guule loo updated greyey")
+    toast.success("Customer si guulle loo updated greyey");
 
     navigate("/Dashboard");
   };
@@ -139,7 +142,7 @@ export default function EditCustomer() {
         </div>
 
         <div className="form-group">
-          <label className="form-label">Status</label>
+          <label className="form-label">Customer Type</label> {/* 🌟 Talo: Magaca "Status" halkan waxaa loo beddelay Customer Type maadaama uu VIP/NORMAL yahay */}
           <select
             name="customerType"
             value={formData.customerType}
@@ -150,8 +153,27 @@ export default function EditCustomer() {
             <option value="NORMAL">NORMAL</option>
           </select>
         </div>
+
+        {/* 🌟 KU DARID: Qaybta doorashada PhotoType ee foomka Edit-ka */}
         <div className="form-group">
-          <label className="form-label">Status2</label>
+          <label className="form-label">Photo Type</label>
+          <select
+            name="PhotoType" // Waa xarfo waaweyn sidii nidaamka kale
+            value={formData.PhotoType || "FullBody"} // Haddii uu xog hore waayo wuxuu qaadanayaa FullBody
+            onChange={handleChange}
+            className="form-select"
+          >
+            <option value="FullBody">FullBody</option>
+            <option value="ID_Card">ID_Card</option>
+            <option value="Headshot">Headshot</option>
+            <option value="Portrait">Portrait</option>
+            <option value="Certificate">Certificate</option>
+            <option value="Wedding">Wedding</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">Status</label> {/* 🌟 Talo: Magaca "Status2" halkan waxaa dib loogu soo celiyay Status */}
           <select
             name="status"
             value={formData.status}
