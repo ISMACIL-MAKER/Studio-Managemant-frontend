@@ -4,7 +4,8 @@ import axios from "axios";
 const API_URL = "https://studio-managemant-backend.onrender.com/api/User";
 
 const initialState = {
-  token: localStorage.getItem("token") || null,
+  // 🌟 SAXID: Waxaan u beddelnay 'accessToken' si uu ula jaanqaado nidaamka cusub
+  token: localStorage.getItem("accessToken") || null,
   // 🔥 LAGU DARAY: Ka soo dhex akhri localStorage-ka haddii uu jiro si aan xogtu u tirtirmin marka bogga la refresh-gareeyo
   userCustomer: JSON.parse(localStorage.getItem("userCustomer")) || null, 
   loading: false,
@@ -19,12 +20,14 @@ export const LoginUser = createAsyncThunk("auth/LoginUser", async (userData, thu
       password: userData.password,
     };
 
+    // 🌟 SAXID: Waxaan ku darnay 'withCredentials: true' si uu Cookie-ga qarsoon u oggolaado browser-ku
     const { data } = await axios.post(`${API_URL}/Login`, payload, {
       headers: { "Content-Type": "application/json" },
+      withCredentials: true, 
     });
 
-    // Kaydi Token-ka iyo Xogta User-ka labadaba
-    localStorage.setItem("token", data.token);
+    // 🌟 SAXID: Waxaan ku kaydinaynaa 'accessToken' halkii ay ka ahayd 'token'
+    localStorage.setItem("accessToken", data.accessToken);
     localStorage.setItem("userCustomer", JSON.stringify(data.user)); 
 
     return data;
@@ -57,8 +60,6 @@ export const RegisterStudio = createAsyncThunk(
   },
 );
 
-
-
 const AuthSlice = createSlice({
   name: "auth", // 🔥 SAXIDDA: Waxaan ka dhignay xaraf yar si uu ula jaanqaado AdminSlice-kaaga
 
@@ -66,7 +67,8 @@ const AuthSlice = createSlice({
 
   reducers: {
     logout: (state) => {
-      localStorage.removeItem("token");
+      // 🌟 SAXID: Halkan ka sifeey 'accessToken'
+      localStorage.removeItem("accessToken");
       localStorage.removeItem("userCustomer"); // 🔥 LAGU DARAY
       state.token = null;
       state.userCustomer = null; // 🔥 LAGU DARAY
@@ -84,7 +86,8 @@ const AuthSlice = createSlice({
       })
       .addCase(LoginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.token = action.payload.token;
+        // 🌟 SAXID: Halkan wuxuu hadda qaadanayaa 'accessToken'-ka cusub ee backend-ku soo diray
+        state.token = action.payload.accessToken;
         state.userCustomer = action.payload.user; // 🔥 KANI AYAA CILADDA SAXAY! Hadda React-ku wuxuu toos u arki doonaa role-ka
         state.successMessage = action.payload.message;
       })
