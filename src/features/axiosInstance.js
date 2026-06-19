@@ -29,6 +29,14 @@ API.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // 🌟 CUSUB: Haddii uu Admin-ku bannaanka u tuuray isticmaalaha (Disabled User)
+    if (error.response && error.response.data && error.response.data.error === "disabled_user") {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("userCustomer"); 
+      window.location.href = "/"; 
+      return Promise.reject(error);
+    }
+
     // 🌟 AMNIGA CUSUB: Haddii backend-ku soo celiyo 401 oo ay farriintu tahay 'token_expired'
     if (
       error.response &&
