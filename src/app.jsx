@@ -16,16 +16,17 @@ import { Toaster } from "react-hot-toast";
 import Archive from "./pages/Archive";
 import Support from "./pages/Support";
 
+// 🌟 KUWA CUSUB: Soo iimport-garee foomamka password-ka rasmiga ah
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 export default function App() {
-  // Waxaan halkan ka soo dhex bixinnay loading haddii uu jiro nidaamkaaga auth
   const { token, userCustomer, loading } = useSelector((state) => state.auth);
   const role = userCustomer?.role;
 
-  // Haddii ay xogta user-ka wali soo dhex kaceyso, sug si uusan loop u dhalan
   if (loading) {
     return (
-      <div style={{ textDisplay: "center", padding: "50px" }}>
+      <div style={{ textAlign: "center", padding: "50px" }}>
         LensSuite la soo kicinayaa...
       </div>
     );
@@ -66,6 +67,10 @@ export default function App() {
           }
         />
 
+        {/* 🌟 KUWA CUSUB: Public Routes oo furan qof kasta ka hor intaanu Login sameyn */}
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
+
         {/* 📸 1. STUDIO ADMIN ROUTES */}
         <Route element={<ProtectedRoute allowedRoles={["studio_admin"]} />}>
           <Route element={<Layout />}>
@@ -74,7 +79,6 @@ export default function App() {
             <Route path="/EditCustomer/:id" element={<EditCustomer />} />
             <Route path="/Reports-Page" element={<Reports />} />
             <Route path="/Support" element={<Support/>}/>
-            
             <Route path="/Archive" element={<Archive/>} />
           </Route>
         </Route>

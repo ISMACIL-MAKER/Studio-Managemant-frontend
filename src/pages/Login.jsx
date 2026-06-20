@@ -69,6 +69,28 @@ export default function Login() {
                   required
                 />
 
+                {/* 🌟 KANI WAA BADHANKA CUSUB EE LOO DARAY */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginTop: "-5px",
+                    marginBottom: "15px",
+                  }}
+                >
+                  <Link
+                    to="/forgot-password"
+                    style={{
+                      color: "#4CAF50",
+                      textDecoration: "none",
+                      fontSize: "13px",
+                      fontWeight: "500",
+                    }}
+                  >
+                    forget Password ?
+                  </Link>
+                </div>
+
                 {error && <p className="error-text">{error}</p>}
                 <button className="from-button" disabled={loading}>
                   {loading ? "Loading....." : "sign in to studio"}
