@@ -52,7 +52,7 @@ export default function ForgotPassword() {
 
         <div style={styles.footer}>
           <Link to="/" style={styles.link}>
-            ← Ku noqo Login
+            ← Ku noqo Loginn
           </Link>
         </div>
       </div>
